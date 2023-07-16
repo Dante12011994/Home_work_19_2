@@ -1,10 +1,8 @@
-
 from django.urls import path
 
 from catalog.views import main, contact
 
 urlpatterns = [
-    path('', main), # Первая страница
-    path('main', main), # Страница "Главная"
-    path('contact', contact), # Страница "Контакты"
+    path('', main, name='main'),  # Страница "Главная"
+    path('contact', contact, name='contact'),  # Страница "Контакты"
 ]
