@@ -17,3 +17,4 @@ class Command(BaseCommand):
             save.append(Category(**i))
 
         Category.objects.bulk_create(save)
+

@@ -32,3 +32,4 @@ class Command(BaseCommand):
             save_list.append(Product(**i))
 
         Product.objects.bulk_create(save_list)
+
