@@ -6,10 +6,10 @@ from catalog.models import Category
 class Command(BaseCommand):
     def handle(self, *args, **options):
         list = [
-            {'category_name': 'еда', 'category_description': 'что-то'},
-            {'category_name': 'одежда', 'category_description': 'что-нибудь'},
-            {'category_name': 'техника', 'category_description': 'еще что-то'},
-            {'category_name': 'транспорт', 'category_description': 'мда'},
+            {'id': 1, 'category_name': 'Еда', 'category_description': 'что-то'},
+            {'id': 2, 'category_name': 'Одежда', 'category_description': 'что-нибудь'},
+            {'id': 3, 'category_name': 'Техника', 'category_description': 'еще что-то'},
+            {'id': 4, 'category_name': 'Транспорт', 'category_description': 'мда'},
         ]
 
         save = []
@@ -17,3 +17,4 @@ class Command(BaseCommand):
             save.append(Category(**i))
 
         Category.objects.bulk_create(save)
+

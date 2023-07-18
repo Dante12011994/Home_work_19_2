@@ -1,12 +1,16 @@
 from django.shortcuts import render
 import psycopg2
+from catalog.models import Product, Category
+
 
 
 def main(request):
     """
     Переходит на страницу "Главная"
     """
-    return render(request, 'catalog/main.html')
+    product_list = Product.objects.order_by('?')[:3]
+    context = {'products': product_list}
+    return render(request, 'catalog/main.html', context)
 
 
 def contact(request):
@@ -19,14 +23,20 @@ def contact(request):
         email = request.POST.get('email')
         text = request.POST.get('massage')
 
-        # Записывает Сообщение оставленое пользователем в базу данных
-        with psycopg2.connect(host="localhost", database='Django_work', user="postgres",
-                              password="pecheneg762") as conn:
-            with conn.cursor() as cur:
-                cur.execute('INSERT INTO massage (first_name, email, title) VALUES (%s, %s, %s)',
-                            (name, email, text))
-        conn.close()
-
         # Воводит сообщение в консоль
         print(f'{name} ({email}): {text}')
     return render(request, 'catalog/contact.html')
+
+
+def products(request):
+    context = {'all_products': Product.objects.all(),
+               'all_category': Category.objects.all()}
+    if request.method == 'POST':
+        product = Product()
+        product.product_name = request.POST.get('name')
+        product.product_description = request.POST.get('description')
+        product.category = Category.objects.get(pk=request.POST.get('category'))
+        product.product_img = request.POST.get('img')
+        product.product_price = request.POST.get('prise')
+        product.save()
+    return render(request, 'catalog/products.html', context)
