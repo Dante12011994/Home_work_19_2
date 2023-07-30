@@ -22,7 +22,7 @@
                 {% for product in products %}
                     <div class="col">
                         <div class="card shadow-sm" >
-                            <img src="{% media_path product.product_img %}" class="card-img" style="width: 100%; height:  20rem;" alt=""/>
+                            <img src="{% media_path product.product_img %}" class="card-img" style="width: 100%; height:  100%;" alt=""/>
                             <div class="card-body">
                                 <p class="card-text" >{{ product|truncatechars:25 }}</p>
                                 <h4 class="text">{{ product.product_price }} руб.</h4>

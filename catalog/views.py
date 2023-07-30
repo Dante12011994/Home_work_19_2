@@ -1,7 +1,9 @@
 from django.shortcuts import render
 import psycopg2
-from catalog.models import Product, Category
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, ListView
 
+from catalog.models import Product, Category
 
 
 def main(request):
@@ -28,15 +30,11 @@ def contact(request):
     return render(request, 'catalog/contact.html')
 
 
-def products(request):
-    context = {'all_products': Product.objects.all(),
-               'all_category': Category.objects.all()}
-    if request.method == 'POST':
-        product = Product()
-        product.product_name = request.POST.get('name')
-        product.product_description = request.POST.get('description')
-        product.category = Category.objects.get(pk=request.POST.get('category'))
-        product.product_img = request.POST.get('img')
-        product.product_price = request.POST.get('prise')
-        product.save()
-    return render(request, 'catalog/products.html', context)
+class ProductListView(ListView):
+    model = Product
+
+
+class ProductCreateView(CreateView):
+    model = Product
+    fields = ('product_name', 'product_description', 'product_img', 'category', 'product_price')
+    success_url = reverse_lazy('catalog:products')
