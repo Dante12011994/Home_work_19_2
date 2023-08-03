@@ -1,6 +1,6 @@
 from django import forms
 
-from catalog.models import Product
+from catalog.models import Product, Version
 
 forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция',
                    'радар']
@@ -35,3 +35,9 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
             if word in cleaned_data.lower():
                 raise forms.ValidationError('Нельзя использовать такое описпание!')
         return cleaned_data
+
+
+class VersionForm(StyleFormMixin, forms.ModelForm):
+    class Meta:
+        model = Version
+        fields = '__all__'
