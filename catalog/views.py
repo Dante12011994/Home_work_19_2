@@ -1,8 +1,9 @@
 from django.shortcuts import render
 import psycopg2
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 
+from catalog.forms import ProductForm
 from catalog.models import Product, Category
 
 
@@ -36,5 +37,20 @@ class ProductListView(ListView):
 
 class ProductCreateView(CreateView):
     model = Product
-    fields = ('product_name', 'product_description', 'product_img', 'category', 'product_price')
+    form_class = ProductForm
+    success_url = reverse_lazy('catalog:products')
+
+
+class ProductDetailView(DetailView):
+    model = Product
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('catalog:products')
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
     success_url = reverse_lazy('catalog:products')
