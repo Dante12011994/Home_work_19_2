@@ -1,0 +1,230 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "category_name": "Еда",
+      "category_description": "что-то"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "category_name": "Одежда",
+      "category_description": "что-нибудь"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "category_name": "Техника",
+      "category_description": "еще что-то"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+      "category_name": "Транспорт",
+      "category_description": "мда"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 11,
+    "fields": {
+      "product_name": "Картошка",
+      "product_description": "Очень вкусная, если пожарить на сковородочке с лучком",
+      "product_img": "картошка.jpg",
+      "category": 1,
+      "product_price": 25,
+      "product_date_creation": "2023-07-16T18:37:40.178Z",
+      "product_last_change": "2023-08-04T08:47:41.002Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 12,
+    "fields": {
+      "product_name": "Колбаса",
+      "product_description": "Положи на хлеб, а потом съешь",
+      "product_img": "колбаса.jpg",
+      "category": 1,
+      "product_price": 180,
+      "product_date_creation": "2023-07-16T18:37:40.178Z",
+      "product_last_change": "2023-08-03T09:47:08.395Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 13,
+    "fields": {
+      "product_name": "Хлеб",
+      "product_description": "Тот самый, на который кладут колбасу",
+      "product_img": "хлеб.jpg",
+      "category": 1,
+      "product_price": 46,
+      "product_date_creation": "2023-07-16T18:37:40.178Z",
+      "product_last_change": "2023-07-16T18:37:40.178Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 14,
+    "fields": {
+      "product_name": "Кросовки",
+      "product_description": "Очень удобно бегать",
+      "product_img": "кросовки.jpg",
+      "category": 2,
+      "product_price": 18962,
+      "product_date_creation": "2023-07-16T18:37:40.178Z",
+      "product_last_change": "2023-07-16T18:37:40.178Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 15,
+    "fields": {
+      "product_name": "Пальто",
+      "product_description": "Чтобы выглядеть сольдно и не мерзнуть",
+      "product_img": "пальто.jpg",
+      "category": 2,
+      "product_price": 25000,
+      "product_date_creation": "2023-07-16T18:37:40.178Z",
+      "product_last_change": "2023-08-04T08:47:09.764Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 16,
+    "fields": {
+      "product_name": "Футболка",
+      "product_description": "Смешная и удобная",
+      "product_img": "футболка.jpg",
+      "category": 2,
+      "product_price": 350,
+      "product_date_creation": "2023-07-16T18:37:40.178Z",
+      "product_last_change": "2023-07-16T18:37:40.178Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 17,
+    "fields": {
+      "product_name": "Телефон",
+      "product_description": "Без него сейчас невозможно обойтись",
+      "product_img": "телефон.jpg",
+      "category": 3,
+      "product_price": 27000,
+      "product_date_creation": "2023-07-16T18:37:40.179Z",
+      "product_last_change": "2023-08-03T16:25:03.650Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 18,
+    "fields": {
+      "product_name": "Телевизор",
+      "product_description": "Самая бесполезная вешь в доме, но без нее трудно представить существование",
+      "product_img": "телевизор.jpg",
+      "category": 3,
+      "product_price": 7600,
+      "product_date_creation": "2023-07-16T18:37:40.179Z",
+      "product_last_change": "2023-07-16T18:37:40.179Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 19,
+    "fields": {
+      "product_name": "Масляный радиатор",
+      "product_description": "Как же приятно прижаться к нему зимой",
+      "product_img": "радиатор.jpg",
+      "category": 3,
+      "product_price": 6350,
+      "product_date_creation": "2023-07-16T18:37:40.179Z",
+      "product_last_change": "2023-07-16T18:37:40.179Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 27,
+    "fields": {
+      "product_name": "Юбка",
+      "product_description": "летом огонь",
+      "product_img": "eldredge-knot.jpg",
+      "category": 2,
+      "product_price": 4000,
+      "product_date_creation": "2023-07-17T10:54:40.460Z",
+      "product_last_change": "2023-07-17T10:54:40.460Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 30,
+    "fields": {
+      "product_name": "теплоход",
+      "product_description": "Отлично подходит для отдыха",
+      "product_img": "media/img_2991_1200.jpg",
+      "category": 4,
+      "product_price": 15000000,
+      "product_date_creation": "2023-07-17T14:40:19.808Z",
+      "product_last_change": "2023-07-17T14:40:19.808Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 37,
+    "fields": {
+      "product_name": "Черный плащ",
+      "product_description": "Только свистни, он появится",
+      "product_img": "img/1659549456_3-kartinkin-net-p-chernii-plashch-art-oboi-3.jpg",
+      "category": 2,
+      "product_price": 4000,
+      "product_date_creation": "2023-07-17T15:09:23.870Z",
+      "product_last_change": "2023-07-17T15:09:23.870Z"
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 1,
+    "fields": {
+      "product": 15,
+      "number_vers": 1,
+      "name": "сезон 2023",
+      "is_active": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 3,
+    "fields": {
+      "product": 15,
+      "number_vers": 2,
+      "name": "сезон 2022",
+      "is_active": false
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 4,
+    "fields": {
+      "product": 11,
+      "number_vers": 1,
+      "name": "урожай 2005 года",
+      "is_active": false
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 5,
+    "fields": {
+      "product": 11,
+      "number_vers": 3,
+      "name": "урожай 2023 года",
+      "is_active": true
+    }
+  }
+]
