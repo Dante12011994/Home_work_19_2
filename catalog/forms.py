@@ -2,11 +2,15 @@ from django import forms
 
 from catalog.models import Product, Version
 
+# Запрещенные слова для регистрации товара
 forbidden_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция',
                    'радар']
 
 
 class StyleFormMixin:
+    """
+    Стиль для отображения формы заполнения
+    """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
@@ -14,11 +18,17 @@ class StyleFormMixin:
 
 
 class ProductForm(StyleFormMixin, forms.ModelForm):
+    """
+    Форма для создания и изменения продукта
+    """
     class Meta:
         model = Product
-        fields = '__all__'
+        exclude = ('user',)
 
     def clean_product_name(self):
+        """
+        Проверка на наличие запрещенных слов в названии
+        """
         cleaned_data = self.cleaned_data['product_name']
 
         for word in forbidden_words:
@@ -28,6 +38,9 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
         return cleaned_data
 
     def clean_product_description(self):
+        """
+        Проверка на наличие запрещенных слов в описание
+        """
 
         cleaned_data = self.cleaned_data['product_description']
 
@@ -38,6 +51,9 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
 
 
 class VersionForm(StyleFormMixin, forms.ModelForm):
+    """
+    Форма для создания и изменения версий продукта
+    """
     class Meta:
         model = Version
         fields = '__all__'

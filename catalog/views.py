@@ -33,25 +33,50 @@ def contact(request):
 
 
 class ProductListView(ListView):
+    """
+    Выводит весь список товаров на страницу
+    """
     model = Product
 
 
 class ProductCreateView(CreateView):
+    """
+    Функционал для создания нового продукта, после возвращает на страницу со всеми товарами
+    """
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:products')
 
+    def form_valid(self, form):
+        """
+        При создании товара, привязывает авторизированного пользователя к товару
+        """
+        self.object = form.save()
+        self.object.user = self.request.user
+        self.object.save()
+
+        return super().form_valid(form)
+
 
 class ProductDetailView(DetailView):
+    """
+    Функционал для вывода информации о товаре
+    """
     model = Product
 
 
 class ProductUpdateView(UpdateView):
+    """
+    Функционал для изменения информации о товаре
+    """
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:products')
 
     def get_context_data(self, **kwargs):
+        """
+        Реализует заполнение и сохранение версий товара
+        """
         context_data = super().get_context_data(**kwargs)
         VersionFormset = inlineformset_factory(Product, Version, form=VersionForm, extra=1)
         if self.request.method == 'POST':
@@ -62,6 +87,9 @@ class ProductUpdateView(UpdateView):
         return context_data
 
     def form_valid(self, form):
+        """
+        При изменение товара, привязывает авторизированного пользователя к товару
+        """
         formset = self.get_context_data()['formset']
         self.object = form.save()
 
@@ -69,9 +97,15 @@ class ProductUpdateView(UpdateView):
             formset.instance = self.object
             formset.save()
 
+        self.object.user = self.request.user
+        self.object.save()
+
         return super().form_valid(form)
 
 
 class ProductDeleteView(DeleteView):
+    """
+    Функционал для удаления товара
+    """
     model = Product
     success_url = reverse_lazy('catalog:products')
