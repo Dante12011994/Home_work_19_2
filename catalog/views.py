@@ -1,11 +1,13 @@
+from django.conf import settings
+from django.core.cache import cache
 from django.forms import inlineformset_factory
 from django.shortcuts import render
-import psycopg2
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 
 from catalog.forms import ProductForm, VersionForm
 from catalog.models import Product, Category, Version
+from catalog.services import get_categories_cache
 
 
 def main(request):
@@ -32,11 +34,26 @@ def contact(request):
     return render(request, 'catalog/contact.html')
 
 
+def categories(request):
+
+    context = {
+        'object_list': get_categories_cache(),
+        'title': 'Все категории наших товаров'
+    }
+    return render(request, 'catalog/category_list.html', context)
+
+
 class ProductListView(ListView):
     """
     Выводит весь список товаров на страницу
     """
     model = Product
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(category_id=self.kwargs.get('pk'))
+
+        return queryset
 
 
 class ProductCreateView(CreateView):

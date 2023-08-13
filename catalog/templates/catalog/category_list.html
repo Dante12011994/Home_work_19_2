@@ -1,0 +1,45 @@
+{% extends 'catalog/base.html' %}
+{% load image_teg %}
+
+
+{% block content %}
+
+<section class="py-5 text-center container" xmlns="http://www.w3.org/1999/html">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Все категории</h1><br>
+        </div>
+    </div>
+</section>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for object in object_list %}
+
+            <div class="col">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <p class="card-text">{{ object }}</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ object.category_description }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-sm btn-primary"
+                                   href="{% url 'catalog:products' object.pk %}">К ТОВАРАМ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
